@@ -1,4 +1,4 @@
-/* Other rules */
+/*-------------- Other rules --------------*/
 * {
   box-sizing: border-box;
   text-decoration: none;
@@ -7,7 +7,7 @@
 body {
   width: 100%;
 }
-/* HEADER */
+/*-------------- HEADER --------------*/
 header {
   width: 100%;
   height: 50px;
@@ -38,7 +38,7 @@ header div button {
   background-color: #0aaeb7;
   color: white;
 }
-/* TITRES */
+/*-------------- TITRES --------------*/
 
 h2 {
   font-weight: 400;
@@ -46,9 +46,9 @@ h2 {
   width: 180px;
 }
 
-/* MAIN */
+/* --------------  MAIN  -------------- */
 
-/* HERO */
+/*************** HERO ***************/
 .contain-hero {
   height: 400px;
   position: relative;
@@ -97,7 +97,7 @@ h2 {
   border: 1px solid #0aaeb7;
 }
 
-/*  */
+/* ---------------  HOME  ------------- */
 
 .container {
   width: 1440px;
@@ -127,6 +127,9 @@ h2 {
 .user {
   color: lightgray;
 }
+
+/* --------------  OFFER  -------------- */
+
 .price {
   font-size: 20px;
   text-align: center;
@@ -189,20 +192,44 @@ h2 {
 }
 
 /* route for fun (404) */
+
 .ERROR {
   font-size: 50px;
-  background-image: url(https://cdn.mos.cms.futurecdn.net/6f2FvbF8pzoKbHbEffsG7M-1200-80.jpg);
+  background-image: url(https://www.techcroute.com/wp-content/uploads/2018/02/bombe_atomique.jpg);
   background-repeat: no-repeat;
+  background-size: cover;
   /* background */
-  width: 100%;
-  height: 100%;
+  /* width: 2000px; */
+  height: 850px;
   position: relative;
+  /* object-fit: contain; */
+}
+.ERROR img {
+  width: 200px;
 }
 .err {
   height: 600px;
 }
 .err,
-.err2 {
+.err2,
+.err2 span,
+.err span {
   color: white;
+  /* position: absolute; */
+}
+.err {
   position: absolute;
+  top: 10%;
+  right: 35%;
+  font-size: 100px;
+  opacity: 0.7;
+}
+.err2 span,
+.err span {
+  font-style: italic;
+}
+.err2 {
+  position: absolute;
+  bottom: 30px;
+  right: 35%;
 }

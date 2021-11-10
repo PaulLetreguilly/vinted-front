@@ -2,8 +2,6 @@ import Offer from "./Offer";
 import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
 
-// const handleClick = (item) => {};
-
 const Home = ({ data }) => {
   return (
     <section>
@@ -19,12 +17,6 @@ const Home = ({ data }) => {
                 <span className="price-home">{item.product_price} €</span>
               </div>
             </Link>
-
-            // <div key={index} className="offer" onClick={()=>handleClick(item)}>
-            //   <h2>{item.product_name}</h2>
-            //   <img src={item.product_image.secure_url} alt="" />
-            //   <div className="price">{item.product_price} €</div>
-            // </div>
           );
         })}
       </div>

@@ -1,9 +1,12 @@
 const Allroutes = () => {
   return (
     <div className="ERROR">
-      <div className="err">404</div>
+      <div className="err">
+        {" "}
+        <span>OOPS...</span> 404 error
+      </div>
       <div className="err2">
-        Vous ne devriez peut-être pas vous trouver ici...
+        Something went <span>TERRIBLY</span> wrong...
       </div>
     </div>
   );
