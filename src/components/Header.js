@@ -26,6 +26,7 @@ const Header = () => {
       setData(response.data);
       const token = data.token;
       Cookies.set("token", token);
+      setConnected(true);
       // Cookies.get("mySignedCookie");
     } catch (error) {
       console.log(error.message);
