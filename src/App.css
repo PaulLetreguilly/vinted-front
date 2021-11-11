@@ -38,6 +38,93 @@ header div button {
   background-color: #0aaeb7;
   color: white;
 }
+header div button:hover {
+  cursor: pointer;
+}
+
+.right-header {
+  margin-right: 300px;
+}
+
+/********* MODAL (START) *********/
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* position: relative; */
+}
+.modal .form {
+  width: 480px;
+  height: 580px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  text-align: center;
+  position: relative;
+}
+.modal .form input:not([type="checkbox"]) {
+  width: 260px;
+  font-size: 16px;
+  padding: 10px 10px;
+  margin-bottom: 30px;
+  font-family: inherit;
+  border: solid black 2px;
+  border-radius: 10px;
+}
+.modal .form h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  /* font-family: "Trip Sans Med", sans-serif; */
+}
+.form p {
+  width: 380px;
+  font-size: 14px;
+  margin-left: 25px;
+}
+.exit {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  font-size: 20px;
+  /* border: 1px solid black; */
+  padding: 5px 5px;
+}
+.exit:hover {
+  cursor: pointer;
+}
+.modal .form input[type="submit"] {
+  color: white;
+  width: 200px;
+  padding: 10px 0px;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2db0ba;
+}
+
+.modal .form input[type="submit"]:hover {
+  /* background-color: #33e2a1; */
+  cursor: pointer;
+}
+.display-modal {
+  display: inherit;
+}
+
+/********* MODAL (END) *********/
+
 /*-------------- TITRES --------------*/
 
 h2 {
@@ -203,6 +290,7 @@ h2 {
   height: 850px;
   position: relative;
   /* object-fit: contain; */
+  /* color: white; */
 }
 .ERROR img {
   width: 200px;
@@ -231,5 +319,8 @@ h2 {
 .err2 {
   position: absolute;
   bottom: 30px;
-  right: 35%;
+  right: 25%;
+}
+.err3 {
+  color: yellow;
 }
