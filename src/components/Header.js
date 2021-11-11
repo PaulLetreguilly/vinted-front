@@ -1,11 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Cookies from "js-cookie";
 
 const Header = () => {
   const [data, setData] = useState();
-  // const [isLoading, setIsLoading] = useState(true);
+  const [data2, setData2] = useState();
   const [modalsign, setModalsign] = useState(false);
   const [modallog, setModallog] = useState(false);
   const [article, setArticle] = useState({
@@ -13,6 +13,8 @@ const Header = () => {
     username: "",
     password: "",
   });
+  const [articlelogin, setArticlelogin] = useState({ email: "", password: "" });
+  const [connected, setConnected] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -22,15 +24,32 @@ const Header = () => {
       );
       console.log(response.data);
       setData(response.data);
-      Cookies.set("myCookie", data.token);
-      Cookies.get("myCookie");
+      const token = data.token;
+      Cookies.set("token", token);
+      // Cookies.get("mySignedCookie");
     } catch (error) {
       console.log(error.message);
     }
   };
-  // console.log(data, "heyaa");
 
-  const navigate = useNavigate();
+  const fetchLogIn = async () => {
+    try {
+      const response = await axios.post(
+        "https://lereacteur-vinted-api.herokuapp.com/user/login",
+        articlelogin
+      );
+      setData2(response.data);
+      const token = data2.token;
+      // console.log(token);
+      Cookies.set("token", token);
+      setConnected(true);
+      // Cookies.get("myLoggedCookie");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  // const navigate = useNavigate();
 
   return (
     <section>
@@ -52,21 +71,40 @@ const Header = () => {
         </div>
 
         <div className="right-header">
-          <button
-            onClick={() => {
-              setModalsign(true);
-            }}
-          >
-            s'inscrire
-          </button>
-          <button
-            onClick={() => {
-              setModallog(true);
-            }}
-          >
-            se connecter
-          </button>
-          <button>vends tes articles</button>
+          {Cookies.get("token") && connected ? (
+            <div>
+              {" "}
+              <button
+                className="disconnect"
+                onClick={() => {
+                  Cookies.remove("log-in");
+                  setConnected(false);
+                }}
+              >
+                Se déconnecter
+              </button>
+              <button>vends tes articles</button>
+            </div>
+          ) : (
+            <div>
+              {" "}
+              <button
+                onClick={() => {
+                  setModalsign(true);
+                }}
+              >
+                s'inscrire
+              </button>
+              <button
+                onClick={() => {
+                  setModallog(true);
+                }}
+              >
+                se connecter
+              </button>
+              <button>vends tes articles</button>
+            </div>
+          )}
         </div>
 
         {/* <Link to="/">Go to home page</Link> */}
@@ -80,6 +118,7 @@ const Header = () => {
             onSubmit={(event) => {
               event.preventDefault();
               fetchData();
+              setModalsign(false);
             }}
           >
             <h2>S'inscrire</h2>
@@ -122,7 +161,16 @@ const Header = () => {
                 confirme avoir au moins 57 ans.
               </p>
             </div>
-            <input type="submit" value="Envoyer le formulaire" />
+            <input type="submit" value="S'inscrire" />
+            <p
+              className="switch"
+              onClick={() => {
+                setModalsign(false);
+                setModallog(true);
+              }}
+            >
+              Déjà un compte? Connecte-toi !
+            </p>
             <div
               className="exit"
               onClick={() => {
@@ -141,28 +189,19 @@ const Header = () => {
             id="myForm"
             onSubmit={(event) => {
               event.preventDefault();
-              fetchData();
+              fetchLogIn();
+              setModallog(false);
             }}
           >
             <h2>Se connecter</h2>
-            <input
-              type="text"
-              placeholder="Nom d'utilisateur"
-              onChange={(event) => {
-                const value = event.target.value;
-                const newUsername = { ...article };
-                newUsername.username = value;
-                setArticle(newUsername);
-              }}
-            />
             <input
               type="email"
               placeholder="Email"
               onChange={(event) => {
                 const value = event.target.value;
-                const newEmail = { ...article };
+                const newEmail = { ...articlelogin };
                 newEmail.email = value;
-                setArticle(newEmail);
+                setArticlelogin(newEmail);
               }}
             />
             <input
@@ -170,21 +209,21 @@ const Header = () => {
               placeholder="Mot de passe"
               onChange={(event) => {
                 const value = event.target.value;
-                const newPassword = { ...article };
+                const newPassword = { ...articlelogin };
                 newPassword.password = value;
-                setArticle(newPassword);
+                setArticlelogin(newPassword);
               }}
             />
-            <div>
-              <input type="checkbox" className="checkbox" />
-              <span>S'inscrire à notre newsletter</span>
-              <p>
-                En m'inscrivant je confirme avoir lu et accepté les Termes &
-                Conditions et Politique de Confidentialité de my Vinted. Je
-                confirme avoir au moins 57 ans.
-              </p>
-            </div>
-            <input type="submit" value="Envoyer le formulaire" />
+            <input type="submit" value="Se connecter" />
+            <p
+              className="switch"
+              onClick={() => {
+                setModallog(false);
+                setModalsign(true);
+              }}
+            >
+              Pas encore de compte? Inscris-toi !
+            </p>
             <div
               className="exit"
               onClick={() => {

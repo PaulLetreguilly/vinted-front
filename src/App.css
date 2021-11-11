@@ -43,7 +43,7 @@ header div button:hover {
 }
 
 .right-header {
-  margin-right: 300px;
+  margin-right: 200px;
 }
 
 /********* MODAL (START) *********/
@@ -63,7 +63,7 @@ header div button:hover {
 }
 .modal .form {
   width: 480px;
-  height: 580px;
+  /* height: 580px; */
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -97,12 +97,20 @@ header div button:hover {
   position: absolute;
   top: 30px;
   right: 50px;
-  font-size: 20px;
+  font-size: 24px;
   /* border: 1px solid black; */
   padding: 5px 5px;
 }
 .exit:hover {
   cursor: pointer;
+  opacity: 0.7;
+}
+.switch {
+  color: #2db0ba;
+}
+.switch:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 .modal .form input[type="submit"] {
   color: white;
@@ -122,7 +130,10 @@ header div button:hover {
 .display-modal {
   display: inherit;
 }
-
+.disconnect {
+  background-color: #c2165a;
+  color: white;
+}
 /********* MODAL (END) *********/
 
 /*-------------- TITRES --------------*/
