@@ -2,14 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import Cookies from "js-cookie";
 
-const SignUp = ({
-  setModallog,
-  setModalsign,
-  modalsign,
-  setConnected,
-  connected,
-}) => {
-  // const [modalsign, setModalsign] = useState(false);
+const SignUp = ({ setModallog, setModalsign, modalsign, setConnected }) => {
   const [article, setArticle] = useState({
     email: "",
     username: "",
@@ -25,17 +18,13 @@ const SignUp = ({
         article
       );
       console.log(response.data);
-      // setData(response.data);
       const token = response.data.token;
       Cookies.set("token", token, { expires: 10 });
       setConnected(true);
-      // Cookies.get("mySignedCookie");
     } catch (error) {
       console.log(error.response.data.message);
-      // console.log(error.message);
       if (error.response.status === 409) {
         setErrorMessage("Cet email a déjà un compte");
-        // console.log(errorMessage);
       }
     }
   };

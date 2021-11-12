@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import { useState } from "react";
 import Cookies from "js-cookie";
 import * as React from "react";
-import { Range } from "react-range";
+// import { Range } from "react-range";
 import SuperSimple from "./SuperSimple";
 import LogIn from "./LogIn";
 import SignUp from "./SignUp";
@@ -114,14 +114,12 @@ const Header = ({ setTitle, setSort, setMin, setMax, min, max }) => {
         modalsign={modalsign}
         setModalsign={setModalsign}
         setConnected={setConnected}
-        connected={connected}
       />
       <LogIn
         setModallog={setModallog}
         modallog={modallog}
         setModalsign={setModalsign}
         setConnected={setConnected}
-        connected={connected}
       />
     </section>
   );

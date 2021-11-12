@@ -21,7 +21,6 @@ const Home = ({ title, sort, min, max }) => {
             },
           }
         );
-        // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -53,15 +52,6 @@ const Home = ({ title, sort, min, max }) => {
           } else {
             return <div></div>;
           }
-          //   return (
-          //     <Link key={index} className="offer" to={`/offer/${item._id}`}>
-          //       <p className="user">{item.owner.account.username}</p>
-          //       <img src={item.product_image.secure_url} alt="" />
-          //       <div className="offer-detail">
-          //         <span>{item.product_name}</span>
-          //         <span className="price-home">{item.product_price} €</span>
-          //       </div>
-          //     </Link>
         })}
       </div>
     </section>

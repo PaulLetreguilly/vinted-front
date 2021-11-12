@@ -7,10 +7,13 @@
 body {
   width: 100%;
 }
+
+/* *********************************** */
 /*-------------- HEADER --------------*/
+/* *********************************** */
+
 header {
   width: 100%;
-  /* height: 50px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,7 +54,7 @@ header div button:hover {
   border: #0aaeb7 1px solid;
 }
 
-/* FILTER PARTS */
+/****** FILTER PARTS ******/
 
 .filter {
   display: flex;
@@ -62,10 +65,9 @@ header div button:hover {
 }
 .searchBar {
   background-color: #f5f6f7;
-  /* border-color: #f5f6f7; */
   border: none;
 }
-/* UNDER-FILTER PARTS */
+/****** UNDER-FILTER PARTS ******/
 .under-filter {
   display: flex;
   justify-content: space-between;
@@ -146,7 +148,8 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-/********* MODAL (START) *********/
+/*****-----**** MODAL (START) ****-----*****/
+/* *****-----**** //////// *****-----**** */
 
 .modal {
   width: 100vw;
@@ -159,11 +162,9 @@ input:checked + .slider:before {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  /* position: relative; */
 }
 .modal .form {
   width: 480px;
-  /* height: 580px; */
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -186,7 +187,6 @@ input:checked + .slider:before {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 30px;
-  /* font-family: "Trip Sans Med", sans-serif; */
 }
 .form p {
   width: 380px;
@@ -198,7 +198,6 @@ input:checked + .slider:before {
   top: 30px;
   right: 50px;
   font-size: 24px;
-  /* border: 1px solid black; */
   padding: 5px 5px;
 }
 .exit:hover {
@@ -224,7 +223,6 @@ input:checked + .slider:before {
 }
 
 .modal .form input[type="submit"]:hover {
-  /* background-color: #33e2a1; */
   cursor: pointer;
 }
 .display-modal {
@@ -234,9 +232,11 @@ input:checked + .slider:before {
   background-color: #c2165a;
   color: white;
 }
-/********* MODAL (END) *********/
+/*****-----**** MODAL (END) ****-----*****/
 
+/* ----------------------------------- */
 /*-------------- TITRES --------------*/
+/* ----------------------------------- */
 
 h2 {
   font-weight: 400;
@@ -244,9 +244,13 @@ h2 {
   width: 180px;
 }
 
+/* ----------------------------------- */
 /* --------------  MAIN  -------------- */
+/* ----------------------------------- */
 
+/* ********************************* */
 /*************** HERO ***************/
+
 .contain-hero {
   height: 400px;
   position: relative;
@@ -254,9 +258,7 @@ h2 {
 .contain-hero img {
   height: 400px;
   width: 100%;
-  /* object-fit: cover; */
   object-fit: cover;
-  /* background-position: 50%; */
 }
 .hero1 img {
   position: absolute;
@@ -275,7 +277,6 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
   border-radius: 5px;
 }
 .but-1,
@@ -295,7 +296,9 @@ h2 {
   border: 1px solid #0aaeb7;
 }
 
+/* ------------------------------------- */
 /* ---------------  HOME  ------------- */
+/* ------------------------------------- */
 
 .container {
   width: 1440px;
@@ -326,7 +329,9 @@ h2 {
   color: lightgray;
 }
 
+/* ------------------------------------- */
 /* --------------  OFFER  -------------- */
+/* ------------------------------------- */
 
 .price {
   font-size: 20px;
@@ -388,20 +393,17 @@ h2 {
   border-radius: 5px;
   border: none;
 }
-
-/* route for fun (404) */
+/* ********************* */
+/*- route for fun (404) -*/
+/* ********************* */
 
 .ERROR {
   font-size: 50px;
   background-image: url(https://www.techcroute.com/wp-content/uploads/2018/02/bombe_atomique.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  /* background */
-  /* width: 2000px; */
   height: 850px;
   position: relative;
-  /* object-fit: contain; */
-  /* color: white; */
 }
 .ERROR img {
   width: 200px;
@@ -414,7 +416,6 @@ h2 {
 .err2 span,
 .err span {
   color: white;
-  /* position: absolute; */
 }
 .err {
   position: absolute;

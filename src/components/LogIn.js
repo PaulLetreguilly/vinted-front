@@ -2,13 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import Cookies from "js-cookie";
 
-const LogIn = ({
-  setModallog,
-  setModalsign,
-  modallog,
-  setConnected,
-  connected,
-}) => {
+const LogIn = ({ setModallog, setModalsign, modallog, setConnected }) => {
   const [articlelogin, setArticlelogin] = useState({ email: "", password: "" });
   const [errorLogIn, setErrorLogIn] = useState("");
 
@@ -19,12 +13,9 @@ const LogIn = ({
         "https://lereacteur-vinted-api.herokuapp.com/user/login",
         articlelogin
       );
-      // setData2(response.data);
       const token = response.data.token;
-      // console.log(token);
       Cookies.set("token", token, { expires: 10 });
       setConnected(true);
-      // Cookies.get("myLoggedCookie");
     } catch (error) {
       console.log(error.response);
       console.log(error.message);

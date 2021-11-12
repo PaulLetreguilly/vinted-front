@@ -15,7 +15,6 @@ const Hero = () => {
         <div className="hero2">
           <h2>Prêt à faire du tri dans vos placards?</h2>
           <button className="but-1">Vends maintenant</button>
-          {/* <button className="but-2">Découvrir comment ça marche</button> */}
         </div>
       </div>
     </section>

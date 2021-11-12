@@ -47,8 +47,6 @@ const Offer = () => {
     };
     fetchData();
   }, [id]);
-  //   console.log(data.offers, id);
-  //   const offer = data.offers.find((elem) => elem._id === id);
 
   return isLoading ? (
     <span>En cours de chargement...</span>
