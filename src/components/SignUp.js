@@ -2,7 +2,13 @@ import axios from "axios";
 import { useState } from "react";
 import Cookies from "js-cookie";
 
-const SignUp = ({ setModallog, setModalsign, modalsign, setConnected }) => {
+const SignUp = ({
+  setModallog,
+  setModalsign,
+  modalsign,
+  setConnected,
+  connected,
+}) => {
   const [article, setArticle] = useState({
     email: "",
     username: "",
@@ -42,6 +48,7 @@ const SignUp = ({ setModallog, setModalsign, modalsign, setConnected }) => {
               if (errorMessage !== "") {
                 setModalsign(false);
               }
+              connected && setModalsign(false);
             }}
           >
             <h2>S'inscrire</h2>

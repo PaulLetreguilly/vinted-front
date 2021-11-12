@@ -2,7 +2,13 @@ import axios from "axios";
 import { useState } from "react";
 import Cookies from "js-cookie";
 
-const LogIn = ({ setModallog, setModalsign, modallog, setConnected }) => {
+const LogIn = ({
+  setModallog,
+  setModalsign,
+  modallog,
+  setConnected,
+  connected,
+}) => {
   const [articlelogin, setArticlelogin] = useState({ email: "", password: "" });
   const [errorLogIn, setErrorLogIn] = useState("");
 
@@ -38,6 +44,7 @@ const LogIn = ({ setModallog, setModalsign, modallog, setConnected }) => {
               if (errorLogIn !== "") {
                 setModallog(false);
               }
+              connected && setModallog(false);
             }}
           >
             <h2>Se connecter</h2>
