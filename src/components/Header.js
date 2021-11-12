@@ -2,10 +2,11 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import Cookies from "js-cookie";
+import * as React from "react";
+import { Range } from "react-range";
+import SuperSimple from "./SuperSimple";
 
-const Header = () => {
-  const [data, setData] = useState();
-  const [data2, setData2] = useState();
+const Header = ({ setTitle, setSort, setMin, setMax, min, max }) => {
   const [modalsign, setModalsign] = useState(false);
   const [modallog, setModallog] = useState(false);
   const [article, setArticle] = useState({
@@ -15,42 +16,59 @@ const Header = () => {
   });
   const [articlelogin, setArticlelogin] = useState({ email: "", password: "" });
   const [connected, setConnected] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [errorLogIn, setErrorLogIn] = useState("");
+  const [check, setCheck] = useState(false);
+
+  const useEffect = () => {};
 
   const fetchData = async () => {
     try {
+      setErrorMessage("");
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
         article
       );
       console.log(response.data);
-      setData(response.data);
-      const token = data.token;
-      Cookies.set("token", token);
+      // setData(response.data);
+      const token = response.data.token;
+      Cookies.set("token", token, { expires: 10 });
       setConnected(true);
       // Cookies.get("mySignedCookie");
     } catch (error) {
-      console.log(error.message);
+      console.log(error.response.data.message);
+      // console.log(error.message);
+      if (error.response.status === 409) {
+        setErrorMessage("Cet email a déjà un compte");
+        // console.log(errorMessage);
+      }
     }
   };
 
   const fetchLogIn = async () => {
     try {
+      setErrorLogIn("");
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/login",
         articlelogin
       );
-      setData2(response.data);
-      const token = data2.token;
+      // setData2(response.data);
+      const token = response.data.token;
       // console.log(token);
-      Cookies.set("token", token);
+      Cookies.set("token", token, { expires: 10 });
       setConnected(true);
       // Cookies.get("myLoggedCookie");
     } catch (error) {
+      console.log(error.response);
       console.log(error.message);
+      if (
+        error.response.status &&
+        (error.response.status === 400 || error.response.status === 401)
+      ) {
+        setErrorLogIn("Mauvais email et/ou mot de passe");
+      }
     }
   };
-
-  // const navigate = useNavigate();
 
   return (
     <section>
@@ -63,12 +81,49 @@ const Header = () => {
               alt=""
             />
           </Link>
-          <input
-            type="text"
-            name=""
-            id=""
-            placeholder="Recherche des articles"
-          />
+          <div className="filter">
+            {" "}
+            <input
+              onChange={(event) => {
+                setTitle(event.target.value);
+              }}
+              type="text"
+              name=""
+              id=""
+              placeholder="Recherche des articles"
+              className="searchBar"
+            />
+            <div className="under-filter">
+              <div>
+                <span className="trie">Trier par prix : </span>
+                <label class="switch">
+                  <input
+                    type="checkbox"
+                    onClick={() => {
+                      if (check) {
+                        setSort("price-asc");
+                      } else {
+                        setSort("price-desc");
+                      }
+                      setCheck(!check);
+                    }}
+                  />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <div className="priceRange">
+                <span>
+                  prix entre : {min} € et {max} €
+                </span>
+                <SuperSimple
+                  min={min}
+                  max={max}
+                  setMin={setMin}
+                  setMax={setMax}
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="right-header">
@@ -90,6 +145,7 @@ const Header = () => {
             <div>
               {" "}
               <button
+                className="header-button"
                 onClick={() => {
                   setModalsign(true);
                 }}
@@ -97,6 +153,7 @@ const Header = () => {
                 s'inscrire
               </button>
               <button
+                className="header-button"
                 onClick={() => {
                   setModallog(true);
                 }}
@@ -107,10 +164,8 @@ const Header = () => {
             </div>
           )}
         </div>
-
-        {/* <Link to="/">Go to home page</Link> */}
       </header>
-      {/* MODAL */}
+      {/****************** MODALS ********************/}
       {modalsign && (
         <main id="myModal" className="modal ">
           <form
@@ -119,7 +174,9 @@ const Header = () => {
             onSubmit={(event) => {
               event.preventDefault();
               fetchData();
-              setModalsign(false);
+              if (errorMessage !== "") {
+                setModalsign(false);
+              }
             }}
           >
             <h2>S'inscrire</h2>
@@ -153,6 +210,7 @@ const Header = () => {
                 setArticle(newPassword);
               }}
             />
+            <span style={{ color: "red" }}>{errorMessage}</span>
             <div>
               <input type="checkbox" className="checkbox" />
               <span>S'inscrire à notre newsletter</span>
@@ -191,7 +249,9 @@ const Header = () => {
             onSubmit={(event) => {
               event.preventDefault();
               fetchLogIn();
-              setModallog(false);
+              if (errorLogIn !== "") {
+                setModallog(false);
+              }
             }}
           >
             <h2>Se connecter</h2>
@@ -215,6 +275,7 @@ const Header = () => {
                 setArticlelogin(newPassword);
               }}
             />
+            <span style={{ color: "red" }}>{errorLogIn}</span>
             <input type="submit" value="Se connecter" />
             <p
               className="switch"
