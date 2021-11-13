@@ -69,12 +69,21 @@ const Offer = () => {
           <div className="info">
             {data.product_details.map((item, index) => {
               const tab = Object.keys(item);
-              return (
-                <div key={index} className="spans">
-                  <span className="span1">{tab[0]}</span>
-                  <span>{item[tab[0]]}</span>
-                </div>
-              );
+              {
+                for (let i = 0; i < tab.length; i++) {
+                  return (
+                    <div key={index} className="spans">
+                      <span className="span1">{tab[i]}</span>
+                      <span>{item[tab[i]]}</span>
+                    </div>
+                  );
+                }
+              }
+              // return (
+              //   <div key={index} className="spans">
+              //     <span className="span1">{tab[0]}</span>
+              //     <span>{item[tab[0]]}</span>
+              //   </div>
             })}
           </div>
         </div>
