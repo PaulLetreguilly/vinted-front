@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-// import Cookies from "js-cookie";
 import * as React from "react";
 import SuperSimple from "./SuperSimple";
 import LogIn from "./LogIn";
@@ -18,7 +17,6 @@ const Header = ({
 }) => {
   const [modalsign, setModalsign] = useState(false);
   const [modallog, setModallog] = useState(false);
-  // const [connected, setConnected] = useState(false);
   const [check, setCheck] = useState(false);
 
   return (
@@ -46,7 +44,7 @@ const Header = ({
             <div className="under-filter">
               <div>
                 <span className="trie">Trier par prix : </span>
-                <label class="switch">
+                <label className="switch">
                   <input
                     type="checkbox"
                     onClick={() => {
@@ -58,7 +56,7 @@ const Header = ({
                       setCheck(!check);
                     }}
                   />
-                  <span class="slider round"></span>
+                  <span className="slider round"></span>
                 </label>
               </div>
               <div className="priceRange">
@@ -83,8 +81,6 @@ const Header = ({
               <button
                 className="disconnect"
                 onClick={() => {
-                  // Cookies.remove("log-in");
-                  // setConnected(false);
                   setUser(null);
                 }}
               >
@@ -121,16 +117,12 @@ const Header = ({
         setModallog={setModallog}
         modalsign={modalsign}
         setModalsign={setModalsign}
-        // setConnected={setConnected}
-        // token={token}
         setUser={setUser}
       />
       <LogIn
         setModallog={setModallog}
         modallog={modallog}
         setModalsign={setModalsign}
-        // setConnected={setConnected}
-        // token={token}
         setUser={setUser}
       />
     </section>

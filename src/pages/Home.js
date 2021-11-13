@@ -11,7 +11,7 @@ const Home = ({ title, sort, min, max }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers",
+          "https://my-vinted-api-paul.herokuapp.com/offers",
           {
             params: {
               title: title,
@@ -35,13 +35,14 @@ const Home = ({ title, sort, min, max }) => {
     <section>
       <Hero />
       <div className="container">
+        {console.log(data.offers)}
         {data.offers.map((item, index) => {
           if (
             item.product_name.toLowerCase().indexOf(title.toLowerCase()) !== -1
           ) {
             return (
               <Link key={index} className="offer" to={`/offer/${item._id}`}>
-                <p className="user">{item.owner.account.username}</p>
+                {/* <p className="user">{item.owner.account.username}</p> */}
                 <img src={item.product_image.secure_url} alt="" />
                 <div className="offer-detail">
                   <span>{item.product_name}</span>

@@ -5,7 +5,6 @@ import { useState } from "react";
 const SuperSimple = ({ min, max, setMin, setMax }) => {
   const [values, setValues] = useState([min, max]);
 
-  //   const useEffect = (() => {}, [values]);
   const a = (min / 500) * 100;
   const b = (max / 500) * 100;
   return (

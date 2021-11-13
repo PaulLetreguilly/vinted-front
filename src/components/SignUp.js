@@ -14,13 +14,18 @@ const SignUp = ({ setModallog, setModalsign, modalsign, setUser }) => {
       event.preventDefault();
       setErrorMessage("");
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+        // "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+        "https://my-vinted-api-paul.herokuapp.com/user/signup",
         article
       );
       if (response.data.token) {
         setUser(response.data.token);
         setModalsign(false);
       }
+
+      //   "https://lereacteur-vinted-api.herokuapp.com/user/signup"
+
+      // "https://my-vinted-api-paul.herokuapp.com/user/signup"
     } catch (error) {
       console.log(error.response);
       console.log(error.message);
@@ -35,7 +40,7 @@ const SignUp = ({ setModallog, setModalsign, modalsign, setUser }) => {
       {modalsign && (
         <main id="myModal" className="modal ">
           <form
-            class="form"
+            className="form"
             id="myForm"
             onSubmit={(event) => {
               fetchData(event);

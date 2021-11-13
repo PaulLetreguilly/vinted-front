@@ -1,13 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
-// import Cookies from "js-cookie";
 
 const LogIn = ({
   setModallog,
   setModalsign,
   modallog,
-  // setConnected,
-  //   connected,
+
   setUser,
 }) => {
   const [articlelogin, setArticlelogin] = useState({ email: "", password: "" });
@@ -19,17 +17,13 @@ const LogIn = ({
 
       setErrorLogIn("");
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/login",
+        "https://my-vinted-api-paul.herokuapp.com/user/login",
         articlelogin
       );
       if (response.data.token) {
         setUser(response.data.token);
         setModallog(false);
       }
-      //   Cookies.set("token", token, { expires: 10 });
-      //   setConnected(true);
-      // if (errorLogIn !== "") {
-      //   }
     } catch (error) {
       console.log(error.response);
       console.log(error.message);
@@ -44,15 +38,10 @@ const LogIn = ({
       {modallog && (
         <main id="myModal" className="modal ">
           <form
-            class="form"
+            className="form"
             id="myForm"
             onSubmit={(event) => {
-              //   event.preventDefault();
               fetchLogIn(event);
-              //   if (errorLogIn !== "") {
-              //     setModallog(false);
-              //   }
-              //   connected && setModallog(false);
             }}
           >
             <h2>Se connecter</h2>
