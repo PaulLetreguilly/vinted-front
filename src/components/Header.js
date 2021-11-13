@@ -1,17 +1,24 @@
 import { Link } from "react-router-dom";
-// import axios from "axios";
 import { useState } from "react";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 import * as React from "react";
-// import { Range } from "react-range";
 import SuperSimple from "./SuperSimple";
 import LogIn from "./LogIn";
 import SignUp from "./SignUp";
 
-const Header = ({ setTitle, setSort, setMin, setMax, min, max }) => {
+const Header = ({
+  setTitle,
+  setSort,
+  setMin,
+  setMax,
+  min,
+  max,
+  token,
+  setUser,
+}) => {
   const [modalsign, setModalsign] = useState(false);
   const [modallog, setModallog] = useState(false);
-  const [connected, setConnected] = useState(false);
+  // const [connected, setConnected] = useState(false);
   const [check, setCheck] = useState(false);
 
   return (
@@ -70,14 +77,15 @@ const Header = ({ setTitle, setSort, setMin, setMax, min, max }) => {
         </div>
 
         <div className="right-header">
-          {Cookies.get("token") && connected ? (
+          {token ? (
             <div>
               {" "}
               <button
                 className="disconnect"
                 onClick={() => {
-                  Cookies.remove("log-in");
-                  setConnected(false);
+                  // Cookies.remove("log-in");
+                  // setConnected(false);
+                  setUser(null);
                 }}
               >
                 Se déconnecter
@@ -113,13 +121,17 @@ const Header = ({ setTitle, setSort, setMin, setMax, min, max }) => {
         setModallog={setModallog}
         modalsign={modalsign}
         setModalsign={setModalsign}
-        setConnected={setConnected}
+        // setConnected={setConnected}
+        // token={token}
+        setUser={setUser}
       />
       <LogIn
         setModallog={setModallog}
         modallog={modallog}
         setModalsign={setModalsign}
-        setConnected={setConnected}
+        // setConnected={setConnected}
+        // token={token}
+        setUser={setUser}
       />
     </section>
   );

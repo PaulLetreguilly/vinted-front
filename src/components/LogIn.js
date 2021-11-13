@@ -1,27 +1,35 @@
 import axios from "axios";
 import { useState } from "react";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 const LogIn = ({
   setModallog,
   setModalsign,
   modallog,
-  setConnected,
-  connected,
+  // setConnected,
+  //   connected,
+  setUser,
 }) => {
   const [articlelogin, setArticlelogin] = useState({ email: "", password: "" });
   const [errorLogIn, setErrorLogIn] = useState("");
 
-  const fetchLogIn = async () => {
+  const fetchLogIn = async (event) => {
     try {
+      event.preventDefault();
+
       setErrorLogIn("");
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/login",
         articlelogin
       );
-      const token = response.data.token;
-      Cookies.set("token", token, { expires: 10 });
-      setConnected(true);
+      if (response.data.token) {
+        setUser(response.data.token);
+        setModallog(false);
+      }
+      //   Cookies.set("token", token, { expires: 10 });
+      //   setConnected(true);
+      // if (errorLogIn !== "") {
+      //   }
     } catch (error) {
       console.log(error.response);
       console.log(error.message);
@@ -39,12 +47,12 @@ const LogIn = ({
             class="form"
             id="myForm"
             onSubmit={(event) => {
-              event.preventDefault();
-              fetchLogIn();
-              if (errorLogIn !== "") {
-                setModallog(false);
-              }
-              connected && setModallog(false);
+              //   event.preventDefault();
+              fetchLogIn(event);
+              //   if (errorLogIn !== "") {
+              //     setModallog(false);
+              //   }
+              //   connected && setModallog(false);
             }}
           >
             <h2>Se connecter</h2>

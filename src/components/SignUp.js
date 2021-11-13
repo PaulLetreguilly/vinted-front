@@ -1,14 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-import Cookies from "js-cookie";
 
-const SignUp = ({
-  setModallog,
-  setModalsign,
-  modalsign,
-  setConnected,
-  connected,
-}) => {
+const SignUp = ({ setModallog, setModalsign, modalsign, setUser }) => {
   const [article, setArticle] = useState({
     email: "",
     username: "",
@@ -16,19 +9,21 @@ const SignUp = ({
   });
   const [errorMessage, setErrorMessage] = useState("");
 
-  const fetchData = async () => {
+  const fetchData = async (event) => {
     try {
+      event.preventDefault();
       setErrorMessage("");
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
         article
       );
-      console.log(response.data);
-      const token = response.data.token;
-      Cookies.set("token", token, { expires: 10 });
-      setConnected(true);
+      if (response.data.token) {
+        setUser(response.data.token);
+        setModalsign(false);
+      }
     } catch (error) {
-      console.log(error.response.data.message);
+      console.log(error.response);
+      console.log(error.message);
       if (error.response.status === 409) {
         setErrorMessage("Cet email a déjà un compte");
       }
@@ -43,12 +38,7 @@ const SignUp = ({
             class="form"
             id="myForm"
             onSubmit={(event) => {
-              event.preventDefault();
-              fetchData();
-              if (errorMessage !== "") {
-                setModalsign(false);
-              }
-              connected && setModalsign(false);
+              fetchData(event);
             }}
           >
             <h2>S'inscrire</h2>

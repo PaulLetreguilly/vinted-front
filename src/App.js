@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import Allroutes from "./pages/Allroutes";
 import Header from "./components/Header";
+import Cookies from "js-cookie";
 
 import "./App.css";
 
@@ -12,6 +13,16 @@ function App() {
   const [sort, setSort] = useState("price-asc");
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(500);
+  const [token, setToken] = useState(null);
+
+  const setUser = (token) => {
+    if (token) {
+      Cookies.set("userToken", token, { expires: 10 });
+    } else {
+      Cookies.remove("userToken");
+    }
+    setToken(token);
+  };
 
   return (
     <Router>
@@ -22,6 +33,8 @@ function App() {
         setMax={setMax}
         min={min}
         max={max}
+        token={token}
+        setUser={setUser}
       />
       <Routes>
         <Route
