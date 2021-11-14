@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import Home from "./pages/Home";
-import Offer from "./pages/Offer";
-import Publish from "./pages/Publish";
-import Allroutes from "./pages/Allroutes";
-import Header from "./components/Header";
+import Home from "./pages/Home.js";
+import Offer from "./pages/Offer.js";
+import Publish from "./pages/Publish.js";
+import Allroutes from "./pages/Allroutes.js";
+import Header from "./components/Header.js";
 import Cookies from "js-cookie";
 
 import "./App.css";
