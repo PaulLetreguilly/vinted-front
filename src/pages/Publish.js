@@ -1,4 +1,6 @@
-const Publish = () => {
+const Publish = ({ setIsHome }) => {
+  setIsHome(false);
+
   return (
     <section className="publish">
       <h2>On progress...</h2>

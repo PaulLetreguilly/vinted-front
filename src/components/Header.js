@@ -15,6 +15,7 @@ const Header = ({
   max,
   token,
   setUser,
+  isHome,
 }) => {
   const [modalsign, setModalsign] = useState(false);
   const [modallog, setModallog] = useState(false);
@@ -49,7 +50,7 @@ const Header = ({
           </Link>
           <div className="filter">
             <input
-              className="search-filter searchBar"
+              className="searchBar"
               onChange={(event) => {
                 setTitle(event.target.value);
               }}
@@ -58,57 +59,59 @@ const Header = ({
               id=""
               placeholder="Recherche des articles"
             />
-            <div className="under-filter">
-              <div>
-                <span className="trie">Trier par prix : </span>
-                <label className="switch">
+            {isHome && (
+              <div className="under-filter">
+                <div>
+                  <span className="trie">Trier par prix : </span>
+                  <label className="switch">
+                    <input
+                      type="checkbox"
+                      onClick={() => {
+                        if (check) {
+                          setSort("price-asc");
+                        } else {
+                          setSort("price-desc");
+                        }
+                        setCheck(!check);
+                      }}
+                    />
+                    <span className="slider round"></span>
+                  </label>
+                </div>
+                <div className="priceRange">
+                  <span>
+                    prix entre : {min} € et {max} €
+                  </span>
+                  <SuperSimple
+                    min={min}
+                    max={max}
+                    setMin={setMin}
+                    setMax={setMax}
+                  />
+                </div>
+                <div className="priceMedia">
                   <input
-                    type="checkbox"
-                    onClick={() => {
-                      if (check) {
-                        setSort("price-asc");
-                      } else {
-                        setSort("price-desc");
-                      }
-                      setCheck(!check);
+                    type="text"
+                    placeholder="min"
+                    onChange={(event) => {
+                      // handleChangeMin(event);
+                      setMin(event.target.value);
                     }}
                   />
-                  <span className="slider round"></span>
-                </label>
-              </div>
-              <div className="priceRange">
-                <span>
-                  prix entre : {min} € et {max} €
-                </span>
-                <SuperSimple
-                  min={min}
-                  max={max}
-                  setMin={setMin}
-                  setMax={setMax}
-                />
-              </div>
-              <div className="priceMedia">
-                <input
-                  type="text"
-                  placeholder="min"
-                  onChange={(event) => {
-                    // handleChangeMin(event);
-                    setMin(event.target.value);
-                  }}
-                />
-                <input
-                  type="text"
-                  placeholder="max"
-                  onChange={(event) => {
-                    // handleChangeMax(event);
-                    setMax(event.target.value);
-                  }}
-                />
-                {/* {isNumber && (
+                  <input
+                    type="text"
+                    placeholder="max"
+                    onChange={(event) => {
+                      // handleChangeMax(event);
+                      setMax(event.target.value);
+                    }}
+                  />
+                  {/* {isNumber && (
                   <p className="checkNumber">veuillez rentrer un nombre</p>
                 )} */}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
 

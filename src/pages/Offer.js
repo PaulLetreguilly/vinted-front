@@ -4,11 +4,13 @@ import { useState, useEffect } from "react";
 // import Carousel from "react-multi-carousel";
 // import "react-multi-carousel/lib/styles.css";
 
-const Offer = () => {
+const Offer = ({ setIsHome }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
+
+  setIsHome(false);
 
   useEffect(() => {
     const fetchData = async () => {

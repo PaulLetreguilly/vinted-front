@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 
-const Allroutes = () => {
+const Allroutes = ({ setIsHome }) => {
+  setIsHome(false);
+
   return (
     <div className="ERROR">
       <div className="err">

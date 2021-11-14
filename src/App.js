@@ -15,6 +15,7 @@ function App() {
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(500);
   const [token, setToken] = useState(null);
+  const [isHome, setIsHome] = useState(false);
 
   const setUser = (token) => {
     if (token) {
@@ -28,6 +29,7 @@ function App() {
   return (
     <Router>
       <Header
+        isHome={isHome}
         setTitle={setTitle}
         setSort={setSort}
         setMin={setMin}
@@ -40,11 +42,22 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home title={title} sort={sort} min={min} max={max} />}
+          element={
+            <Home
+              setIsHome={setIsHome}
+              title={title}
+              sort={sort}
+              min={min}
+              max={max}
+            />
+          }
         />
-        <Route path="/offer/:id" element={<Offer />} />
-        <Route path="/offer/publish" element={<Publish />} />
-        <Route path="*" element={<Allroutes />} />
+        <Route path="/offer/:id" element={<Offer setIsHome={setIsHome} />} />
+        <Route
+          path="/offer/publish"
+          element={<Publish setIsHome={setIsHome} />}
+        />
+        <Route path="*" element={<Allroutes setIsHome={setIsHome} />} />
       </Routes>
     </Router>
   );

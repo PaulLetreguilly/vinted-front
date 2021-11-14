@@ -3,13 +3,14 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Hero from "../components/Hero";
 
-const Home = ({ title, sort, min, max }) => {
+const Home = ({ title, sort, min, max, setIsHome }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsHome(true);
         const response = await axios.get(
           "https://my-vinted-api-paul.herokuapp.com/offers",
           {
