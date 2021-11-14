@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import * as React from "react";
-import SuperSimple from "./SuperSimple";
-import LogIn from "./LogIn";
-import SignUp from "./SignUp";
+import SuperSimple from "./SuperSimple.js";
+import LogIn from "./LogIn.js";
+import SignUp from "./SignUp.js";
 import { useNavigate } from "react-router-dom";
 
 const Header = ({
