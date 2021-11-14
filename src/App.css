@@ -24,21 +24,24 @@ header {
   padding: 0 20px;
   margin: 20px 10px;
 }
+
+/*----- LEFT-HEADER -----*/
+
 .left-header {
   display: flex;
   align-items: center;
 }
-.left-header input {
+.left-header > .filter > input {
   padding: 10px 200px 10px 10px;
-  margin: 0 20px;
+  margin: 0 10px 10px;
 }
 .logo {
-  height: 50px;
+  max-height: 50px;
   object-fit: cover;
-  margin: 0 100px 0 200px;
+  margin: 0 50px 0 200px;
 }
 header div button {
-  margin-right: 40px;
+  margin-right: 20px;
   padding: 5px 10px;
   border-radius: 5px;
   border: none;
@@ -48,17 +51,27 @@ header div button {
 header div button:hover {
   cursor: pointer;
 }
-
-.right-header {
-  margin-right: 200px;
+header .priceRange {
+  display: inherit;
 }
-.header-button {
-  color: #0aaeb7;
-  background-color: white;
-  border: #0aaeb7 1px solid;
+header .priceMedia {
+  display: none;
+  position: relative;
 }
-
-/****** FILTER PARTS ******/
+.priceMedia input {
+  width: 50px;
+  padding: 5px 5px;
+  margin-right: 40px;
+}
+/* .checkNumber {
+  color: red;
+  font-style: italic;
+  font-size: 14px;
+  position: absolute;
+  top: 20px;
+  right: 40px;
+} */
+/*** FILTER PARTS ***/
 
 .filter {
   display: flex;
@@ -71,7 +84,7 @@ header div button:hover {
   background-color: #f5f6f7;
   border: none;
 }
-/****** UNDER-FILTER PARTS ******/
+/*** UNDER-FILTER PARTS ***/
 .under-filter {
   display: flex;
   justify-content: space-between;
@@ -152,8 +165,23 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+/*----- RIGHT-HEADER -----*/
+
+.right-header {
+  margin-right: 150px;
+}
+.header-button {
+  color: #0aaeb7;
+  background-color: white;
+  border: #0aaeb7 1px solid;
+}
+
 /*****-----**** MODAL (START) ****-----*****/
 /* *****-----**** //////// *****-----**** */
+
+/* .modal-body {
+  overflow: hidden;
+} */
 
 .modal {
   width: 100vw;
@@ -165,7 +193,7 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .modal .form {
   width: 480px;
@@ -310,6 +338,11 @@ h2 {
   display: flex;
   flex-wrap: wrap;
 }
+.offer-count {
+  margin-top: 30px;
+  margin-left: 50px;
+  font-weight: bold;
+}
 .offer {
   margin: 20px 20px;
 }
@@ -329,7 +362,7 @@ h2 {
 }
 
 .user {
-  color: lightgray;
+  color: pink;
 }
 
 /* ------------------------------------- */
@@ -346,15 +379,16 @@ h2 {
   justify-content: space-evenly;
   background-color: #ebedee;
   width: 100%;
-  height: 850px;
+  max-height: 850px;
 }
 .contain-offer img {
   height: 600px;
   object-fit: cover;
+  max-width: 900px;
 }
 .contain-offer img,
 .contain-offer .details {
-  margin-top: 50px;
+  margin: 50px 0;
 }
 
 .details {
@@ -395,6 +429,32 @@ h2 {
   color: white;
   border-radius: 5px;
   border: none;
+}
+.hide-it {
+  display: none;
+  padding: 5px 80px;
+  margin: 10px 50px;
+  background-color: #0aaeb7;
+  color: white;
+  border-radius: 5px;
+  border: none;
+}
+
+/* -----------  PUBLISH PAGE  ----------- */
+
+.publish {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #eaedee;
+}
+
+.publish-contain {
+  width: 1024px;
+  height: 150px;
+  background-color: white;
+  margin-bottom: 20px;
 }
 
 /*----- ********************* -----*/
@@ -439,4 +499,198 @@ h2 {
 }
 .err3 {
   color: yellow;
+}
+
+/* ******************* MEDIA *******************  */
+/* ****************** QUERIES ******************* */
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .logo {
+    max-height: 40px;
+    margin: 0 50px 0 150px;
+  }
+  .right-header {
+    margin-right: 100px;
+  }
+  .header-button {
+    margin-bottom: 10px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .logo {
+    max-height: 40px;
+    margin: 0 50px 0 50px;
+  }
+  .right-header {
+    margin-right: 50px;
+  }
+  .header-button {
+    margin-bottom: 10px;
+  }
+  .contain-hero img {
+    height: 250px;
+    width: 100%;
+  }
+  .hero1 img {
+    bottom: 0;
+    right: 0;
+  }
+  .hero2 {
+    max-width: 300px;
+    top: 20px;
+    left: 50px;
+  }
+  .contain-offer {
+    width: 100%;
+    max-height: 850px;
+  }
+  .contain-offer img {
+    height: 400px;
+    object-fit: cover;
+    max-width: 900px;
+  }
+  .details {
+    /* width: 400px; */
+    height: 400px;
+    padding: 10px 20px;
+    margin-left: 300px;
+  }
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
+  .logo {
+    max-height: 40px;
+    margin: 0 50px 0 0;
+  }
+  .right-header {
+    margin-right: 10px;
+  }
+  .header-button {
+    margin-bottom: 10px;
+  }
+  .contain-hero img {
+    height: 250px;
+    width: 100%;
+  }
+  .hero1 img {
+    bottom: 0;
+    right: 0;
+  }
+
+  .hero2 {
+    max-width: 300px;
+    height: 150px;
+    top: 20px;
+    left: 50px;
+  }
+  .left-header > .filter > input {
+    padding: 10px 80px 10px 10px;
+    margin: 0 10px 10px;
+  }
+  .trie {
+    display: none;
+  }
+  header .priceRange {
+    display: none;
+  }
+  header .priceMedia {
+    display: flex;
+  }
+  .container {
+    flex-wrap: nowrap;
+    overflow: scroll;
+    margin-left: 20px;
+  }
+  .contain-offer {
+    /* width: 100%; */
+    max-height: 700px;
+    flex-direction: column;
+  }
+  .contain-offer img {
+    height: 300px;
+    object-fit: cover;
+    max-width: 600px;
+    margin-left: 20px;
+  }
+  .details {
+    height: 300px;
+    max-width: 600px;
+    margin-left: 20px !important;
+  }
+  .infos {
+    display: none;
+  }
+  .hide-it {
+    display: initial;
+  }
+}
+
+@media (max-width: 425px) {
+  .logo {
+    max-height: 30px;
+    margin: 0 10px 0 0;
+  }
+  .right-header {
+    margin-right: 10px;
+  }
+  .header-button {
+    margin-bottom: 10px;
+  }
+  .contain-hero img {
+    height: 250px;
+    width: 100%;
+  }
+  .hero1 img {
+    bottom: 0;
+    right: 0;
+  }
+  .hero2 {
+    max-width: 200px;
+    height: 150px;
+    top: 20px;
+    left: 50px;
+  }
+  .left-header > .filter > input {
+    padding: 10px 80px 10px 10px;
+    margin: 0 10px 10px;
+  }
+  .trie {
+    display: none;
+  }
+  header .priceRange {
+    display: none;
+  }
+  header .priceMedia {
+    display: flex;
+  }
+  .container {
+    flex-wrap: nowrap;
+    overflow: scroll;
+    margin-left: 20px;
+    /* flex-direction: column; */
+  }
+  .contain-offer {
+    /* width: 100%; */
+    max-height: 700px;
+    flex-direction: column;
+  }
+  .contain-offer img {
+    height: 250px;
+    max-width: 400px;
+    object-fit: cover;
+    /* max-width: 600px;*/
+    margin-left: 10px;
+  }
+  .details {
+    height: 300px;
+    margin-left: 10px !important;
+    /* max-width: 500px; */
+  }
+  .infos {
+    display: none;
+  }
+  .hide-it {
+    display: initial;
+  }
 }

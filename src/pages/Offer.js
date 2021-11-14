@@ -62,6 +62,7 @@ const Offer = () => {
           <p className="info">{data.product_description}</p>
           <button>acheter</button>
         </div>
+        <button className="hide-it">acheter</button>
       </div>
     </section>
   );

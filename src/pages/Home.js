@@ -32,27 +32,24 @@ const Home = ({ title, sort, min, max }) => {
   return isLoading ? (
     <span>En cours de chargement...</span>
   ) : (
-    <section>
+    <section
+    // style={{ overflow: "hidden" }}
+    >
       <Hero />
+      <div className="offer-count">{data.count} offres trouvées</div>
       <div className="container">
-        {console.log(data.offers)}
+        {/* {console.log(data.offers)} */}
         {data.offers.map((item, index) => {
-          if (
-            item.product_name.toLowerCase().indexOf(title.toLowerCase()) !== -1
-          ) {
-            return (
-              <Link key={index} className="offer" to={`/offer/${item._id}`}>
-                {/* <p className="user">{item.owner.account.username}</p> */}
-                <img src={item.product_image.secure_url} alt="" />
-                <div className="offer-detail">
-                  <span>{item.product_name}</span>
-                  <span className="price-home">{item.product_price} €</span>
-                </div>
-              </Link>
-            );
-          } else {
-            return <div></div>;
-          }
+          return (
+            <Link key={index} className="offer" to={`/offer/${item._id}`}>
+              <p className="user">{item.owner.account.username}</p>
+              <img src={item.product_image.secure_url} alt="" />
+              <div className="offer-detail">
+                <span>{item.product_name}</span>
+                <span className="price-home">{item.product_price} €</span>
+              </div>
+            </Link>
+          );
         })}
       </div>
     </section>

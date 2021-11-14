@@ -4,6 +4,7 @@ import * as React from "react";
 import SuperSimple from "./SuperSimple";
 import LogIn from "./LogIn";
 import SignUp from "./SignUp";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({
   setTitle,
@@ -18,9 +19,25 @@ const Header = ({
   const [modalsign, setModalsign] = useState(false);
   const [modallog, setModallog] = useState(false);
   const [check, setCheck] = useState(false);
+  // const [isNumber, setIsNumber] = useState(false);
+
+  const navigate = useNavigate();
+
+  // const handleChangeMin = (event) => {
+  //   if (typeof event.target.value === "number") {
+  //     setMin(event.targer.value);
+  //   } else {
+  //   }
+  // };
+  // const handleChangeMax = (event) => {
+  //   if (typeof Number(event.target.value) === "number") {
+  //     setMax(event.targer.value);
+  //   } else {
+  //   }
+  // };
 
   return (
-    <section>
+    <section className={(modalsign || modallog) && "modal-body"}>
       <header>
         <div className="left-header">
           <Link to="/">
@@ -32,6 +49,7 @@ const Header = ({
           </Link>
           <div className="filter">
             <input
+              className="search-filter searchBar"
               onChange={(event) => {
                 setTitle(event.target.value);
               }}
@@ -39,7 +57,6 @@ const Header = ({
               name=""
               id=""
               placeholder="Recherche des articles"
-              className="searchBar"
             />
             <div className="under-filter">
               <div>
@@ -69,6 +86,27 @@ const Header = ({
                   setMin={setMin}
                   setMax={setMax}
                 />
+              </div>
+              <div className="priceMedia">
+                <input
+                  type="text"
+                  placeholder="min"
+                  onChange={(event) => {
+                    // handleChangeMin(event);
+                    setMin(event.target.value);
+                  }}
+                />
+                <input
+                  type="text"
+                  placeholder="max"
+                  onChange={(event) => {
+                    // handleChangeMax(event);
+                    setMax(event.target.value);
+                  }}
+                />
+                {/* {isNumber && (
+                  <p className="checkNumber">veuillez rentrer un nombre</p>
+                )} */}
               </div>
             </div>
           </div>
@@ -107,7 +145,13 @@ const Header = ({
               >
                 se connecter
               </button>
-              <button>vends tes articles</button>
+              <button
+                onClick={() => {
+                  navigate("/offer/publish");
+                }}
+              >
+                vends tes articles
+              </button>
             </div>
           )}
         </div>

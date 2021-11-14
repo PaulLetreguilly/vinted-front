@@ -8,7 +8,7 @@ const SuperSimple = ({ min, max, setMin, setMax }) => {
   const a = (min / 500) * 100;
   const b = (max / 500) * 100;
   return (
-    <div>
+    <div className="SuperSimple">
       <Range
         step={1}
         min={0}

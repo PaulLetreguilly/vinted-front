@@ -34,9 +34,9 @@ const LogIn = ({
   };
 
   return (
-    <div>
+    <div className="modal-body">
       {modallog && (
-        <main id="myModal" className="modal ">
+        <main id="myModal" className="modal">
           <form
             className="form"
             id="myForm"

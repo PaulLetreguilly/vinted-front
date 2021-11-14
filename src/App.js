@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Home from "./pages/Home";
 import Offer from "./pages/Offer";
+import Publish from "./pages/Publish";
 import Allroutes from "./pages/Allroutes";
 import Header from "./components/Header";
 import Cookies from "js-cookie";
@@ -42,6 +43,7 @@ function App() {
           element={<Home title={title} sort={sort} min={min} max={max} />}
         />
         <Route path="/offer/:id" element={<Offer />} />
+        <Route path="/offer/publish" element={<Publish />} />
         <Route path="*" element={<Allroutes />} />
       </Routes>
     </Router>

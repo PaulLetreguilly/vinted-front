@@ -36,7 +36,7 @@ const SignUp = ({ setModallog, setModalsign, modalsign, setUser }) => {
   };
 
   return (
-    <div>
+    <div className="modal-body">
       {modalsign && (
         <main id="myModal" className="modal ">
           <form
