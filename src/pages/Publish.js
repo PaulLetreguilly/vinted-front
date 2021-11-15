@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Dropzone from "../components/Dropzone";
 
-const Publish = ({ setIsHome, token }) => {
-  setIsHome(false);
+const Publish = ({ token }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -17,6 +17,12 @@ const Publish = ({ setIsHome, token }) => {
   const [data, setData] = useState();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/");
+    }
+  }, [token, navigate]);
 
   const handleSubmit = async (event) => {
     // Faire une requête axios vers le serveur pour uploder l'image
@@ -39,6 +45,8 @@ const Publish = ({ setIsHome, token }) => {
       formData.append("picture", file);
 
       const response = await axios.post(
+        // "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+        // "http://localhost:4000/offer/publish",
         "https://my-vinted-api-paul.herokuapp.com/offer/publish",
         formData,
         {
@@ -65,13 +73,15 @@ const Publish = ({ setIsHome, token }) => {
   };
   return (
     <section className="publish">
-      <h2>Vends ton article</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form-publish">
+        <h2>Vends ton article</h2>
         <div className="publish-contain pub-file">
           <input
+            style={{ display: "none" }}
             type="file"
             onChange={(event) => setFile(event.target.files[0])}
           />
+          <Dropzone setFile={setFile} file={file} />
         </div>
         <div className="publish-contain">
           <div>
@@ -84,13 +94,8 @@ const Publish = ({ setIsHome, token }) => {
           </div>
           <div>
             <span>Décris ton article</span>
-            {/* <input
-              type="text"
-              placeholder="ex : Porté plusieurs fois, abimé"
-              onChange={(event) => setDescription(event.target.value)}
-            /> */}
             <textarea
-              //   disabled="true"
+              className="pub-textarea"
               placeholder="ex : Porté plusieurs fois, abimé"
               name=""
               id=""

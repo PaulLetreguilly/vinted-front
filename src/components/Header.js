@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as React from "react";
 import SuperSimple from "./SuperSimple";
 import LogIn from "./LogIn";
 import SignUp from "./SignUp";
-import { useNavigate } from "react-router-dom";
-// import Cookies from "js-cookie";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Header = ({
   setTitle,
@@ -16,18 +15,26 @@ const Header = ({
   max,
   token,
   setUser,
-  isHome,
   modallog,
   setModallog,
 }) => {
   const [modalsign, setModalsign] = useState(false);
-  // const [modallog, setModallog] = useState(false);
   const [check, setCheck] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (modallog || modalsign) {
+      document.body.style.overflow = "hidden";
+    }
+    if (!modallog && !modalsign) {
+      document.body.style.overflow = "unset";
+    }
+  }, [modallog, modalsign]);
 
   return (
-    <section className={(modalsign || modallog) && "modal-body"}>
+    <section>
       <header>
         <div className="left-header">
           <Link to="/">
@@ -48,7 +55,8 @@ const Header = ({
               id=""
               placeholder="Recherche des articles"
             />
-            {isHome && (
+
+            {location.pathname === "/" && (
               <div className="under-filter">
                 <div>
                   <span className="trie">Trier par prix : </span>
