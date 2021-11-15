@@ -16,7 +16,7 @@ const SignUp = ({ setModallog, setModalsign, modalsign, setUser }) => {
       const response = await axios.post(
         // "https://lereacteur-vinted-api.herokuapp.com/user/signup",
         // "http://localhost:4000/user/signup",
-        "https://my-vinted-api-paul.herokuapp.com/signup",
+        "https://my-vinted-api-paul.herokuapp.com/user/signup",
         article
       );
       if (response.data.token) {

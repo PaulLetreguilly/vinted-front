@@ -161,7 +161,7 @@ const Publish = ({ token }) => {
             <span>Je suis intéressé(e) par les échanges</span>
           </div>
         </div>
-        <input type="submit" value="Ajouter" />
+        <input className="form-submit" type="submit" value="Ajouter" />
       </form>
     </section>
   );

@@ -27,7 +27,6 @@ const Offer = () => {
     fetchData();
   }, [id]);
 
-  // console.log(data);
   let arr = [];
   if (data) {
     arr = Object.keys(data.product_details);

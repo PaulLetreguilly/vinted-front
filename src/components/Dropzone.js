@@ -10,7 +10,7 @@ const Dropzone = ({ setFile, file }) => {
     onDrop,
     multiple: true,
   });
-  // URL.createeObjectURL(file[0])
+  // URL.createObjectURL(file[0])
   return (
     <div>
       <div
@@ -21,14 +21,13 @@ const Dropzone = ({ setFile, file }) => {
           setFile(event);
         }}
       >
-        {file &&
-          file.map((item, index) => {
-            return (
-              <p key={index} className="pic-name">
-                {item.name}
-              </p>
-            );
-          })}
+        {file && (
+          <img
+            src={URL.createObjectURL(file[0])}
+            alt=""
+            style={{ height: "150px" }}
+          />
+        )}
         <input {...getInputProps()} />
         <p className="add-pic">+ Ajoute une photo</p>
       </div>

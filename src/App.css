@@ -467,7 +467,7 @@ h2 {
   margin-bottom: 20px;
 }
 .form-publish {
-  /* position: relative; */
+  position: relative;
 }
 .form-publish > h2 {
   color: #434343;
@@ -503,6 +503,7 @@ h2 {
 }
 .publish-check {
   justify-content: flex-end !important;
+  margin-bottom: 100px !important;
 }
 .zone {
   height: 200px;
@@ -529,6 +530,18 @@ h2 {
 /* .publish-contain > div > button {
   padding: 10px 20px;
 } */
+
+.form-submit {
+  color: white;
+  background-color: #0ab1ba;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 40px;
+  margin-bottom: 20px;
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+}
 
 /*----- ********************* -----*/
 /*-----* route for fun (404) *-----*/
