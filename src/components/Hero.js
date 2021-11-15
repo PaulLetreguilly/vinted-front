@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const Hero = () => {
+const Hero = ({ setModallog, token }) => {
   const navigate = useNavigate();
 
   return (
@@ -18,14 +18,25 @@ const Hero = () => {
         </div>
         <div className="hero2">
           <h2>Prêt à faire du tri dans vos placards?</h2>
-          <button
-            className="but-1"
-            onClick={() => {
-              navigate("/offer/publish");
-            }}
-          >
-            Vends maintenant
-          </button>
+          {token ? (
+            <button
+              className="but-1"
+              onClick={() => {
+                navigate("/offer/publish");
+              }}
+            >
+              Vends maintenant
+            </button>
+          ) : (
+            <button
+              className="but-1"
+              onClick={() => {
+                setModallog(true);
+              }}
+            >
+              Vends maintenant
+            </button>
+          )}
         </div>
       </div>
     </section>

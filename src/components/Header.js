@@ -5,6 +5,7 @@ import SuperSimple from "./SuperSimple";
 import LogIn from "./LogIn";
 import SignUp from "./SignUp";
 import { useNavigate } from "react-router-dom";
+// import Cookies from "js-cookie";
 
 const Header = ({
   setTitle,
@@ -16,26 +17,14 @@ const Header = ({
   token,
   setUser,
   isHome,
+  modallog,
+  setModallog,
 }) => {
   const [modalsign, setModalsign] = useState(false);
-  const [modallog, setModallog] = useState(false);
+  // const [modallog, setModallog] = useState(false);
   const [check, setCheck] = useState(false);
-  // const [isNumber, setIsNumber] = useState(false);
 
   const navigate = useNavigate();
-
-  // const handleChangeMin = (event) => {
-  //   if (typeof event.target.value === "number") {
-  //     setMin(event.targer.value);
-  //   } else {
-  //   }
-  // };
-  // const handleChangeMax = (event) => {
-  //   if (typeof Number(event.target.value) === "number") {
-  //     setMax(event.targer.value);
-  //   } else {
-  //   }
-  // };
 
   return (
     <section className={(modalsign || modallog) && "modal-body"}>
@@ -127,7 +116,13 @@ const Header = ({
               >
                 Se déconnecter
               </button>
-              <button>vends tes articles</button>
+              <button
+                onClick={() => {
+                  navigate("/offer/publish");
+                }}
+              >
+                vends tes articles
+              </button>
             </div>
           ) : (
             <div>
@@ -150,7 +145,7 @@ const Header = ({
               </button>
               <button
                 onClick={() => {
-                  navigate("/offer/publish");
+                  setModallog(true);
                 }}
               >
                 vends tes articles

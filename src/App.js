@@ -16,6 +16,7 @@ function App() {
   const [max, setMax] = useState(500);
   const [token, setToken] = useState(null);
   const [isHome, setIsHome] = useState(false);
+  const [modallog, setModallog] = useState(false);
 
   const setUser = (token) => {
     if (token) {
@@ -24,6 +25,7 @@ function App() {
       Cookies.remove("userToken");
     }
     setToken(token);
+    // console.log(Cookies.get("userToken"));
   };
 
   return (
@@ -38,6 +40,8 @@ function App() {
         max={max}
         token={token}
         setUser={setUser}
+        setModallog={setModallog}
+        modallog={modallog}
       />
       <Routes>
         <Route
@@ -49,13 +53,15 @@ function App() {
               sort={sort}
               min={min}
               max={max}
+              token={token}
+              setModallog={setModallog}
             />
           }
         />
         <Route path="/offer/:id" element={<Offer setIsHome={setIsHome} />} />
         <Route
           path="/offer/publish"
-          element={<Publish setIsHome={setIsHome} />}
+          element={<Publish setIsHome={setIsHome} token={token} />}
         />
         <Route path="*" element={<Allroutes setIsHome={setIsHome} />} />
       </Routes>

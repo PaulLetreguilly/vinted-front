@@ -3,14 +3,18 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Hero from "../components/Hero";
 
-const Home = ({ title, sort, min, max, setIsHome }) => {
+const Home = ({ title, sort, min, max, setIsHome, setModallog, token }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
+  // useCallback(() => {
+  //   setIsHome(true);
+  // }, []);
+  setIsHome(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setIsHome(true);
         const response = await axios.get(
           "https://my-vinted-api-paul.herokuapp.com/offers",
           {
@@ -36,7 +40,7 @@ const Home = ({ title, sort, min, max, setIsHome }) => {
     <section
     // style={{ overflow: "hidden" }}
     >
-      <Hero />
+      <Hero setModallog={setModallog} token={token} />
       <div className="offer-count">{data.count} offres trouvées</div>
       <div className="container">
         {/* {console.log(data.offers)} */}

@@ -10,9 +10,8 @@ const Offer = ({ setIsHome }) => {
 
   const { id } = useParams();
 
-  setIsHome(false);
-
   useEffect(() => {
+    setIsHome(false);
     const fetchData = async () => {
       try {
         const response = await axios.get(

@@ -362,7 +362,7 @@ h2 {
 }
 
 .user {
-  color: pink;
+  /* color: pink;s */
 }
 
 /* ------------------------------------- */
@@ -448,14 +448,54 @@ h2 {
   justify-content: center;
   align-items: center;
   background-color: #eaedee;
+  position: relative;
 }
-
+.pub-file {
+  margin-top: 80px;
+}
 .publish-contain {
   width: 1024px;
-  height: 150px;
   background-color: white;
   margin-bottom: 20px;
 }
+.publish > h2 {
+  color: #434343;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.publish-contain > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10px;
+  margin: 10px auto;
+}
+.publish-contain > div:not(:last-child) {
+  border-bottom: 1px solid #d4d7d8;
+}
+.publish-contain > div > input[type="text"] {
+  padding: 5px 20px 5px 5px;
+  border: none;
+  border-bottom: #d4d7d8 1px solid;
+  width: 350px;
+}
+.publish-contain > div > textarea {
+  border: none;
+  border-bottom: #d4d7d8 1px solid;
+}
+.publish-contain > div > span {
+  color: #434343;
+}
+::placeholder {
+  color: #d4d7d8;
+}
+.publish-check {
+  justify-content: flex-end !important;
+}
+/* .publish-contain > div > button {
+  padding: 10px 20px;
+} */
 
 /*----- ********************* -----*/
 /*-----* route for fun (404) *-----*/
