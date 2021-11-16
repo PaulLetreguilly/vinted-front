@@ -58,7 +58,7 @@ function App() {
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="/offer/publish" element={<Publish token={token} />} />
         <Route
-          path="/payment"
+          path="/payment/:id"
           element={<Payment token={token} setModallog={setModallog} />}
         />
         <Route path="*" element={<Allroutes />} />

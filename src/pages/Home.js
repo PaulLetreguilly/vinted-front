@@ -50,42 +50,6 @@ const Home = ({ title, sort, min, max, setModallog, token }) => {
       <Hero setModallog={setModallog} token={token} />
       <div className="offer-count">
         <span>{data.count} offres trouvées </span>
-        {/* <span>
-          {page > 1 && (
-            <button>
-              <FontAwesomeIcon
-                icon="arrow-left"
-                onClick={() => {
-                  const result = page - 1;
-                  setPage(result);
-                  console.log(page, limit);
-                }}
-              />
-            </button>
-          )}{" "}
-          pages{" "}
-          {data.count % page <= limit && (
-            <button>
-              <FontAwesomeIcon
-                icon="arrow-right"
-                onClick={() => {
-                  const result = page + 1;
-                  setPage(result);
-                }}
-              />
-            </button>
-          )}
-   
-        </span>
-        <span>
-          nombre d'offres par page :{" "}
-          <input
-            type="text"
-            onChange={(event) => {
-              setLimit(event.target.value);
-            }}
-          />
-        </span> */}
       </div>
       <div className="container">
         {data.offers.map((item, index) => {

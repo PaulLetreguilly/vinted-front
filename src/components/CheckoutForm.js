@@ -7,7 +7,7 @@ import {
 import axios from "axios";
 import { useState } from "react";
 
-const CheckoutForm = ({ token }) => {
+const CheckoutForm = ({ token, id, price, name }) => {
   const [valid, setValid] = useState("");
 
   const stripe = useStripe();
@@ -24,14 +24,17 @@ const CheckoutForm = ({ token }) => {
       });
 
       const response = await axios.post("http://localhost:4000/payment", {
-        stripeToken: stripeResponse.token.id,
-        productPrice: 20,
+        token: stripeResponse.token.id,
+        amount: price + 15,
+        name: name,
+        id: id,
       });
       console.log(response.data);
       if (response.status === 200) {
         setValid("Paiement validé !");
       }
     } catch (error) {
+      console.log(error.response.data);
       console.log(error.message);
     }
   };
@@ -41,13 +44,30 @@ const CheckoutForm = ({ token }) => {
       <form onSubmit={handleSubmit} className="pay-form">
         <div>
           <div style={{ color: "lightgray" }}>Résumé de la commande</div>
-          <p>Commande</p>
-          <p>Frais de protection acheteurs</p>
-          <p>Frais de port</p>
+          <p>
+            <span>Commande</span>
+            <span>{price} €</span>
+          </p>
+          <p>
+            <span>Frais de protection acheteurs </span>
+            <span>5 €</span>
+          </p>
+          <p>
+            <span>Frais de port </span>
+            <span>10 €</span>
+          </p>
         </div>
         <div>
-          <p>Total</p>
-          <p>Il ne vous reste plus que ....</p>
+          <p>
+            <span>Total</span>
+            <span>{price + 15} €</span>
+          </p>
+          <p className="not-this-one">
+            Il ne vous reste plus qu'une étape pour vous offrir{" "}
+            <span className="pay-span">{name}</span>. Vous allez payer{" "}
+            <span className="pay-span">{price + 15}</span> € (frais de
+            protection et frais de port inclus)
+          </p>
         </div>
         <div>
           <CardElement style={{ border: "1px solid lightgray" }} />

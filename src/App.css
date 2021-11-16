@@ -578,6 +578,21 @@ h2 {
 .pay-form input {
   padding: 10px 400px;
   margin: 20px 80px;
+  background-color: #02c06d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+.pay-form input:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+.pay-form p:not(.not-this-one) {
+  display: flex;
+  justify-content: space-between;
+}
+.pay-span {
+  font-weight: bold;
 }
 
 /*----- ********************* -----*/

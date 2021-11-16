@@ -25,15 +25,10 @@ const Publish = ({ token }) => {
   }, [token, navigate]);
 
   const handleSubmit = async (event) => {
-    // Faire une requête axios vers le serveur pour uploder l'image
-
     try {
       event.preventDefault();
-      // On doit joindre à la requête :
-      // - title et file
-      // - un Bearer Token
+
       const formData = new FormData();
-      // ajouter des paires clé/valeur
       formData.append("title", title);
       formData.append("description", description);
       formData.append("price", price);
@@ -162,12 +157,7 @@ const Publish = ({ token }) => {
             <span>Je suis intéressé(e) par les échanges</span>
           </div>
         </div>
-        <input
-          className="form-submit"
-          type="submit"
-          value="Ajouter"
-          //   onSubmit={handleSubmit}
-        />
+        <input className="form-submit" type="submit" value="Ajouter" />
       </form>
     </section>
   );

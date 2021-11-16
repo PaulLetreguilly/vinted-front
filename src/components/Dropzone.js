@@ -10,23 +10,11 @@ const Dropzone = ({ setFile, file }) => {
     onDrop,
     multiple: true,
   });
-  // URL.createObjectURL(file[0])
   return (
     <div>
-      <div
-        {...getRootProps()}
-        className="zone"
-        onDrag={(event) => {
-          // console.log(event);
-          // setFile(event);
-        }}
-      >
+      <div {...getRootProps()} className="zone">
         {file && (
-          <img
-            src={URL.createObjectURL(file)}
-            alt=""
-            style={{ height: "150px" }}
-          />
+          <img src={URL.createObjectURL(file)} style={{ height: "150px" }} />
         )}
         <input {...getInputProps()} />
         <p className="add-pic">+ Ajoute une photo</p>
