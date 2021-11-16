@@ -72,7 +72,7 @@ const CheckoutForm = ({ token, id, price, name }) => {
             protection et frais de port inclus)
           </p>
         </div>
-        <div>
+        <div className="pay-last-segment">
           <CardElement
             style={{ border: "1px solid lightgray" }}
             className="card-element"

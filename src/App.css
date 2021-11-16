@@ -577,7 +577,7 @@ h2 {
 }
 .pay-form input {
   padding: 10px 200px;
-  margin: 20px 170px;
+  /* margin: 20px 170px; */
   background-color: #02c06d;
   color: white;
   border: none;
@@ -600,10 +600,14 @@ h2 {
   margin: 10px 0 10px 44%;
 }
 .card-element {
-  margin: 10px 180px;
+  margin: 10px 10px;
   padding: 10px 5px;
   border: 1px solid lightgray;
   border-radius: 5px;
+}
+.pay-last-segment {
+  display: flex;
+  flex-direction: column;
 }
 /*----- ********************* -----*/
 /*-----* route for fun (404) *-----*/
@@ -675,6 +679,13 @@ h2 {
   .header-button {
     margin-bottom: 10px;
   }
+  /*  */
+  .pay-body {
+    height: 600px;
+  }
+  .pay-form {
+    width: 600px;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -720,6 +731,26 @@ h2 {
   }
   .publish-contain > div > input[type="text"] {
     width: 350px;
+  }
+  /*  */
+  .pay-body {
+    height: 600px;
+  }
+  .pay-form {
+    width: 500px;
+  }
+  .pay-form > div {
+    margin: 20px 10px;
+    padding: 10px 10px;
+  }
+
+  .validation {
+    font-style: 20px;
+    margin: 10px 0 10px 44%;
+  }
+  .card-element {
+    margin: 10px 30px;
+    padding: 10px 5px;
   }
 }
 
@@ -794,6 +825,27 @@ h2 {
   }
   .publish-contain > div > input[type="text"] {
     width: 350px;
+  }
+  .pay-body {
+    height: 600px;
+  }
+  .pay-form {
+    width: 500px;
+  }
+  .pay-form > div {
+    margin: 20px 10px;
+    padding: 10px 10px;
+  }
+  .pay-form input {
+    padding: 10px 200px;
+  }
+  .validation {
+    font-style: 20px;
+    margin: 10px 0 10px 44%;
+  }
+  .card-element {
+    margin: 10px 30px;
+    padding: 10px 5px;
   }
 }
 
@@ -872,5 +924,26 @@ h2 {
   }
   .disconnect {
     margin-bottom: 5px;
+  }
+  .pay-body {
+    height: 600px;
+  }
+  .pay-form {
+    width: 400px;
+  }
+  .pay-form > div {
+    margin: 10px 5px;
+    padding: 10px 10px;
+  }
+  .pay-form input {
+    padding: 10px 180px;
+  }
+  .validation {
+    font-style: 20px;
+    margin: 10px 0 10px 44%;
+  }
+  .card-element {
+    margin: 5px 10px;
+    padding: 10px 5px;
   }
 }

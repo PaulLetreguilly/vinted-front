@@ -1,32 +1,27 @@
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
-// import { useNavigate } from "react-router";
 
 const Offer = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
-  // const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          // `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
-          // `http://localhost:4000/offer/${id}`
           `https://my-vinted-api-paul.herokuapp.com/offer/${id}`
         );
         setData(response.data);
-        console.log(response.data);
+        // console.log(response.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
       }
     };
     fetchData();
-    // console.log(data._id);
   }, [id]);
 
   let arr = [];
