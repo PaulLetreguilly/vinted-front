@@ -64,7 +64,8 @@ const Publish = ({ token }) => {
       console.log(response.data);
       setData(response.data);
       alert("offre crée");
-      if (response.data) {
+
+      if (response.data?._id) {
         navigate(`/offer/${response.data._id}`);
       }
     } catch (error) {
@@ -151,8 +152,8 @@ const Publish = ({ token }) => {
           <div>
             <span>Prix</span>
             <input
-              type="text"
-              placeholder="0.00 €"
+              type="number"
+              placeholder="0.00"
               onChange={(event) => setPrice(event.target.value)}
             />
           </div>
@@ -161,7 +162,12 @@ const Publish = ({ token }) => {
             <span>Je suis intéressé(e) par les échanges</span>
           </div>
         </div>
-        <input className="form-submit" type="submit" value="Ajouter" />
+        <input
+          className="form-submit"
+          type="submit"
+          value="Ajouter"
+          //   onSubmit={handleSubmit}
+        />
       </form>
     </section>
   );

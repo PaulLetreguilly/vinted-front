@@ -4,7 +4,7 @@ import { useDropzone } from "react-dropzone";
 const Dropzone = ({ setFile, file }) => {
   const onDrop = useCallback((acceptedFiles) => {
     console.log(acceptedFiles);
-    setFile(acceptedFiles);
+    setFile(acceptedFiles[0]);
   });
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
@@ -17,13 +17,13 @@ const Dropzone = ({ setFile, file }) => {
         {...getRootProps()}
         className="zone"
         onDrag={(event) => {
-          console.log(event);
-          setFile(event);
+          // console.log(event);
+          // setFile(event);
         }}
       >
         {file && (
           <img
-            src={URL.createObjectURL(file[0])}
+            src={URL.createObjectURL(file)}
             alt=""
             style={{ height: "150px" }}
           />

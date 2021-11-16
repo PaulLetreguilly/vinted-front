@@ -91,7 +91,9 @@ const Home = ({ title, sort, min, max, setModallog, token }) => {
         {data.offers.map((item, index) => {
           return (
             <Link key={index} className="offer" to={`/offer/${item._id}`}>
-              <p className="user">vendeur : {item.owner.account.username}</p>
+              <p className="user">
+                vendeur : {item.owner.account.account.username}
+              </p>
               <img src={item.product_image.secure_url} alt="" />
               <div className="offer-detail">
                 <span>{item.product_name}</span>

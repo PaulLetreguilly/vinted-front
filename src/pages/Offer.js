@@ -1,6 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 // import Carousel from "react-multi-carousel";
 // import "react-multi-carousel/lib/styles.css";
 
@@ -9,6 +10,7 @@ const Offer = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -64,9 +66,13 @@ const Offer = () => {
         <div className="infos">
           <p className="info">{data.product_name}</p>
           <p className="info">{data.product_description}</p>
-          <button>acheter</button>
+          <Link to={`/payment`}>
+            <button>acheter</button>
+          </Link>
         </div>
-        <button className="hide-it">acheter</button>
+        <Link to={`/payment`}>
+          <button className="hide-it">acheter</button>
+        </Link>
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import Offer from "./pages/Offer";
 import Publish from "./pages/Publish";
 import Allroutes from "./pages/Allroutes";
 import Header from "./components/Header";
+import Payment from "./pages/Payment";
 import Cookies from "js-cookie";
 
 import "./App.css";
@@ -14,7 +15,7 @@ function App() {
   const [sort, setSort] = useState("price-asc");
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(500);
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(Cookies.get("userToken") || null);
   const [modallog, setModallog] = useState(false);
 
   const setUser = (token) => {
@@ -56,6 +57,10 @@ function App() {
         />
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="/offer/publish" element={<Publish token={token} />} />
+        <Route
+          path="/payment"
+          element={<Payment token={token} setModallog={setModallog} />}
+        />
         <Route path="*" element={<Allroutes />} />
       </Routes>
     </Router>
