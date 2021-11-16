@@ -14,8 +14,6 @@ const SignUp = ({ setModallog, setModalsign, modalsign, setUser }) => {
       event.preventDefault();
       setErrorMessage("");
       const response = await axios.post(
-        // "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-        // "http://localhost:4000/user/signup",
         "https://my-vinted-api-paul.herokuapp.com/user/signup",
         article
       );
@@ -23,10 +21,6 @@ const SignUp = ({ setModallog, setModalsign, modalsign, setUser }) => {
         setUser(response.data.token);
         setModalsign(false);
       }
-
-      //   "https://lereacteur-vinted-api.herokuapp.com/user/signup"
-
-      // "https://my-vinted-api-paul.herokuapp.com/user/signup"
     } catch (error) {
       console.log(error.response);
       console.log(error.message);

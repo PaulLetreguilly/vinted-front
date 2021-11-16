@@ -17,8 +17,9 @@ const Header = ({
   setUser,
   modallog,
   setModallog,
+  setModalsign,
+  modalsign,
 }) => {
-  const [modalsign, setModalsign] = useState(false);
   const [check, setCheck] = useState(false);
 
   const navigate = useNavigate();
@@ -91,7 +92,6 @@ const Header = ({
                     type="text"
                     placeholder="min"
                     onChange={(event) => {
-                      // handleChangeMin(event);
                       setMin(event.target.value);
                     }}
                   />
@@ -99,13 +99,9 @@ const Header = ({
                     type="text"
                     placeholder="max"
                     onChange={(event) => {
-                      // handleChangeMax(event);
                       setMax(event.target.value);
                     }}
                   />
-                  {/* {isNumber && (
-                  <p className="checkNumber">veuillez rentrer un nombre</p>
-                )} */}
                 </div>
               </div>
             )}

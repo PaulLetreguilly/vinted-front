@@ -2,25 +2,19 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Hero from "../components/Hero";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-library.add(faArrowLeft, faArrowRight);
 
 const Home = ({ title, sort, min, max, setModallog, token }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(20);
+  const [limit, setLimit] = useState(20); // pagination on progress... (need to sort out other issues before)
   const [pages, setPages] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          // "https://lereacteur-vinted-api.herokuapp.com/offers",
-          // "http://localhost:4000/offers",
           "https://my-vinted-api-paul.herokuapp.com/offers",
           {
             params: {
@@ -33,7 +27,6 @@ const Home = ({ title, sort, min, max, setModallog, token }) => {
             },
           }
         );
-        // console.log(response.data);
         setData(response.data);
         setPages(Math.round(response.data.count / limit));
         setIsLoading(false);

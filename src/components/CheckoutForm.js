@@ -2,7 +2,7 @@ import {
   useStripe,
   useElements,
   CardElement,
-  Elements,
+  // Elements,
 } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useState } from "react";
@@ -23,12 +23,15 @@ const CheckoutForm = ({ token, id, price, name }) => {
         name: token,
       });
 
-      const response = await axios.post("http://localhost:4000/payment", {
-        token: stripeResponse.token.id,
-        amount: price + 15,
-        name: name,
-        id: id,
-      });
+      const response = await axios.post(
+        "https://my-vinted-api-paul.herokuapp.com/payment",
+        {
+          token: stripeResponse.token.id,
+          amount: price + 15,
+          name: name,
+          id: id,
+        }
+      );
       console.log(response.data);
       if (response.status === 200) {
         setValid("Paiement validé !");
@@ -59,8 +62,8 @@ const CheckoutForm = ({ token, id, price, name }) => {
         </div>
         <div>
           <p>
-            <span>Total</span>
-            <span>{price + 15} €</span>
+            <span className="pay-span">Total</span>
+            <span className="pay-span">{price + 15} €</span>
           </p>
           <p className="not-this-one">
             Il ne vous reste plus qu'une étape pour vous offrir{" "}
@@ -70,9 +73,14 @@ const CheckoutForm = ({ token, id, price, name }) => {
           </p>
         </div>
         <div>
-          <CardElement style={{ border: "1px solid lightgray" }} />
+          <CardElement
+            style={{ border: "1px solid lightgray" }}
+            className="card-element"
+          />
           <input type="submit" value="Pay" />
-          <span style={{ color: "green" }}>{valid}</span>
+          <span className="validation" style={{ color: "green" }}>
+            {valid}
+          </span>
         </div>
       </form>
     </section>

@@ -561,7 +561,7 @@ h2 {
 }
 .pay-form {
   margin: 20px 0;
-  width: 1024px;
+  width: 800px;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -576,8 +576,8 @@ h2 {
   border-bottom: 1px solid lightgray;
 }
 .pay-form input {
-  padding: 10px 400px;
-  margin: 20px 80px;
+  padding: 10px 200px;
+  margin: 20px 170px;
   background-color: #02c06d;
   color: white;
   border: none;
@@ -594,7 +594,17 @@ h2 {
 .pay-span {
   font-weight: bold;
 }
-
+.validation {
+  text-align: center;
+  font-style: 20px;
+  margin: 10px 0 10px 44%;
+}
+.card-element {
+  margin: 10px 180px;
+  padding: 10px 5px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
 /*----- ********************* -----*/
 /*-----* route for fun (404) *-----*/
 /*----- ********************* -----*/

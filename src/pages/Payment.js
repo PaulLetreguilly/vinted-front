@@ -5,14 +5,16 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Payment = ({ token, setModallog }) => {
+const Payment = ({ token, setModallog, modalsign }) => {
   const [data, setData] = useState();
 
   const { id } = useParams();
-  // console.log(id);
 
   if (!token) {
-    setModallog(true);
+    if (modalsign) {
+    } else {
+      setModallog(true);
+    }
   } else {
     setModallog(false);
   }
@@ -24,8 +26,6 @@ const Payment = ({ token, setModallog }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          // `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
-          // `http://localhost:4000/offer/${id}`
           `https://my-vinted-api-paul.herokuapp.com/offer/${id}`
         );
         setData(response.data);
@@ -35,7 +35,6 @@ const Payment = ({ token, setModallog }) => {
       }
     };
     fetchData();
-    // console.log(data._id);
   }, [id]);
 
   return (
@@ -43,9 +42,9 @@ const Payment = ({ token, setModallog }) => {
       <Elements stripe={stripePromise}>
         <CheckoutForm
           token={token}
-          price={data.product_price}
-          name={data.product_name}
-          id={data._id}
+          price={data?.product_price}
+          name={data?.product_name}
+          id={data?._id}
         />
       </Elements>
     </div>

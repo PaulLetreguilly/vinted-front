@@ -11,8 +11,6 @@ const LogIn = ({ setModallog, setModalsign, modallog, setUser }) => {
 
       setErrorLogIn("");
       const response = await axios.post(
-        // "https://lereacteur-vinted-api.herokuapp.com/user/login",
-        // "http://localhost:4000/user/login",
         "https://my-vinted-api-paul.herokuapp.com/user/login",
         articlelogin
       );

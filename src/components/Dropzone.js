@@ -14,7 +14,11 @@ const Dropzone = ({ setFile, file }) => {
     <div>
       <div {...getRootProps()} className="zone">
         {file && (
-          <img src={URL.createObjectURL(file)} style={{ height: "150px" }} />
+          <img
+            src={URL.createObjectURL(file)}
+            style={{ height: "150px" }}
+            alt=""
+          />
         )}
         <input {...getInputProps()} />
         <p className="add-pic">+ Ajoute une photo</p>

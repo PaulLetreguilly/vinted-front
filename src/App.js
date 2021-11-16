@@ -17,6 +17,7 @@ function App() {
   const [max, setMax] = useState(500);
   const [token, setToken] = useState(Cookies.get("userToken") || null);
   const [modallog, setModallog] = useState(false);
+  const [modalsign, setModalsign] = useState(false);
 
   const setUser = (token) => {
     if (token) {
@@ -40,6 +41,8 @@ function App() {
         setUser={setUser}
         setModallog={setModallog}
         modallog={modallog}
+        setModalsign={setModalsign}
+        modalsign={modalsign}
       />
       <Routes>
         <Route
@@ -59,7 +62,13 @@ function App() {
         <Route path="/offer/publish" element={<Publish token={token} />} />
         <Route
           path="/payment/:id"
-          element={<Payment token={token} setModallog={setModallog} />}
+          element={
+            <Payment
+              token={token}
+              setModallog={setModallog}
+              modalsign={modalsign}
+            />
+          }
         />
         <Route path="*" element={<Allroutes />} />
       </Routes>
