@@ -28,6 +28,8 @@ const Publish = ({ token }) => {
     try {
       event.preventDefault();
 
+      // need to test something with formData
+
       const formData = new FormData();
       formData.append("title", title);
       formData.append("description", description);
