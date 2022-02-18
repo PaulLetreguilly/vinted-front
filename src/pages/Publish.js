@@ -41,6 +41,8 @@ const Publish = ({ token }) => {
       formData.append("brand", brand);
       formData.append("picture", file);
 
+      console.log(formData);
+
       const response = await axios.post(
         "https://my-vinted-api-paul.herokuapp.com/offer/publish",
         formData,
